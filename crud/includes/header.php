@@ -5,13 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/login.css"> <!-- Estilos CSS -->
-    <style>
-body {
-    background-image: url('../../views/img/img14.jpg');
-    background-size: 1500px 1000px; /* Por ejemplo, ajusta la imagen a 1500px de ancho y 1000px de alto */
-    background-position: center;
-}
-</style>
+    
   
     <title>CRUD PHP</title>
 </head>

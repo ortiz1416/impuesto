@@ -2,6 +2,12 @@
 <?php include '../includes/db.php'; ?>
 <link rel="stylesheet" href="../css/crudc.css">
 <h2>Lista de Cilindradas</h2>
+<style>
+  /* Estilo para el encabezado */
+
+
+ 
+</style>
 <a href="create.php" class="green-button">crear</a>
 
 <table>

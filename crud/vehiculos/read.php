@@ -86,7 +86,7 @@
             <td>" . $row["linea"] . "</td>
             <td>" . $row["f_matricula"] . "</td>
             <td> " . $row["avaluo_porcentaje"] . "%</td> <!-- Cambiado para mostrar el porcentaje de avalúo -->
-            <td> <a href='../../php/impuestos.php?placa=" . $row["placa"] . " '>crear impuesto</a> </td>
+            <td> <a href='../../php/impuestos.php?placa=" . $row["placa"] . " '>crear</a> </td>
             <td> <a href='update.php?placa=" . $row["placa"] . "'>Editar</a> </td>
             
             <td> <a href='delete.php?placa=" . $row["placa"] . "'>Eliminar</a> </td>

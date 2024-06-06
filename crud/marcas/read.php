@@ -2,6 +2,7 @@
 <?php include '../includes/db.php'; ?>
 <link rel="stylesheet" href="../css/crudc.css">
 <h2>Lista de Marcas</h2>
+
 <a href="create.php" class="green-button">crear</a>
 
 <table>
