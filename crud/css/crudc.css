@@ -1,0 +1,56 @@
+table {
+    width: 80%; /* Ancho de la tabla */
+    margin: 20px auto 0 auto; /* Margen superior ajustado */
+    border-collapse: collapse;
+    border: 1px solid #cccccc; /* Borde gris */
+}
+
+/* Estilos de las celdas de encabezado de la tabla */
+th {
+    background-color: #f2f2f2; /* Color de fondo gris claro */
+    color: #333; /* Color del texto */
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ccc; /* Borde gris */
+}
+
+/* Estilos de las celdas de datos de la tabla */
+td {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+    border: 1px solid #ccc; /* Borde gris */
+}
+h2 {
+  text-align: center;
+}
+
+
+.green-button:hover {
+  background-color: darkgreen;
+}
+a[href^='update.php'] {
+  background-color: blue;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+/* Estilo para el enlace de Eliminar */
+a[href^='delete.php'] {
+  background-color: lightgrey;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.green-button {
+  background-color: green;
+  color: rgb(255, 255, 255);
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 135px; /* Agrega margen alrededor del botón */
+  
+}

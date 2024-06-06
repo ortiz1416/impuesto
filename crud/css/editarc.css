@@ -1,0 +1,19 @@
+.centered-form {
+    text-align: center; /* Centrar el formulario y su contenido */
+  }
+  
+  .blue-button {
+    background-color:  blue;
+    color: white;
+    padding: 8px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .blue-button:hover {
+    opacity: 0.8; /* Reducir la opacidad cuando se pasa el mouse sobre el botón */
+  }
+  h2 {
+    text-align: center; /* Centra horizontalmente el texto */
+  }
+

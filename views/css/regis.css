@@ -1,0 +1,73 @@
+
+body {
+    background-color: black;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../img/img1.jpg');
+    background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
+    background-size: contain; /* Asegura que la imagen sea visible en su totalidad */
+    background-position: center; /* Centra la imagen de fondo */
+    animation: zoomBackground 10s ease-in-out infinite alternate; /* Aplica la animación de zoom al fondo */
+}
+
+/* Definición de la animación de zoom */
+@keyframes zoomBackground {
+    0% {
+        background-size: 100%; /* Tamaño original */
+    }
+    50% {
+        background-size: 110%; /* Zoom al 110% */
+    }
+    100% {
+        background-size: 100%; /* Tamaño original */
+    }
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.685);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.534);
+    text-align: center;
+    width: 300px;
+}
+
+
+
+
+h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+input, select, button {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color:blue;
+}

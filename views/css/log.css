@@ -1,0 +1,116 @@
+body {
+    background-color: black;
+    margin: 0;
+    background-image: url('../img/im5.webp');
+    background-repeat: repeat; /* Permite que la imagen de fondo se repita */
+    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+    animation: zoomBackground 10s ease-in-out infinite alternate; /* Aplica la animación de zoom al fondo */
+    color: black; /* Cambia el color del texto a negro */
+}
+
+/* Definición de la animación de zoom */
+@keyframes zoomBackground {
+    0% {
+        background-size: 100%; /* Tamaño original */
+    }
+    50% {
+        background-size: 110%; /* Zoom al 110% */
+    }
+    100% {
+        background-size: 100%; /* Tamaño original */
+    }
+}
+
+/* Estilos generales */
+
+h2 {
+    text-align: center;
+}
+
+.container {
+    width: 300px;
+    margin: 100px auto; /* Reducir el margen superior */
+    padding: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    background-color: #f9f9f9a9;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+
+h2 {
+    font-family: 'Times New Roman', Times, serif;
+    color: #0a0a0a;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #f8f5f5;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0220a5;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0220a5;
+}
+
+p {
+    color: red;
+}
+
+/* Estilos para el botón de regresar */
+.back-button {
+    display: inline-block;
+    margin: 10px 0 0 10px; /* Margen superior y izquierdo */
+    padding: 10px 15px;
+    background-color:#0f13f7;
+    color: #080808;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.back-button:hover {
+    background-color: #091dcc;
+}
+/* Estilos para los botones */
+.botones-container {
+    margin-top: 40px; /* Ajusta el margen superior de los botones */
+    text-align: left; /* Alinea los botones a la izquierda */
+}
+
+.botones-container a {
+    display: inline-block; /* Permite que los botones estén en línea */
+    margin-right: 10px; /* Ajusta el margen derecho entre los botones */
+    background-color: blue;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.botones-container a:hover {
+    background-color: darkblue;
+}
+
+

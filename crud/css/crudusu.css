@@ -1,0 +1,36 @@
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px; /* Ajusta el ancho máximo según tus necesidades */
+    margin: auto; /* Centra el formulario horizontalmente */
+}
+label {
+    margin-bottom: 5px; /* Espacio entre etiquetas */
+}
+input, select {
+    margin-bottom: 10px; /* Espacio entre campos */
+    padding: 5px;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    box-sizing: border-box; /* Incluye el relleno en el ancho total */
+}
+input[type="submit"] {
+    width: auto; /* Ancho automático para el botón de enviar */
+    align-self: flex-start; /* Alinea el botón a la izquierda */
+}
+h2 {
+text-align: center;
+}  
+input[type="submit"] {
+    width: auto; /* Ancho automático para el botón de enviar */
+    align-self: flex-start; /* Alinea el botón a la izquierda */
+    margin-top: 10px; /* Margen superior para desplazar el botón hacia abajo */
+    background-color: blue; /* Cambia el color de fondo del botón a azul */
+    color: white; /* Cambia el color del texto a blanco */
+    border: none; /* Elimina el borde del botón */
+    padding: 10px 20px; /* Añade relleno al botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(64, 164, 189); /* Cambia el color de fondo del botón al pasar el cursor sobre él */
+}
