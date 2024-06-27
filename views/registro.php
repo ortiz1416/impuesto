@@ -11,8 +11,6 @@
 
 <body>
 <div style="display: flex; flex-direction: row; position: fixed; top: 0; left: 0;">
-    <a href="../index.php" style="background-color:silver; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; margin-top: 40px;">Salir</a>
-    <a href="login.php" style="background-color: silver; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; margin-top: 40px; margin-left: 10px;">Iniciar Sesión</a>
 </div>
 
 <div class="container">
@@ -36,9 +34,11 @@
 
         <label for="password">Contraseña:</label>
         <input type="password" id="password" name="password">
+        <a href="login.php">Iniciar Sesión</a>
 
         <button type="submit">Registrar</button>
     </form>
+
 </div>
 
 <script>

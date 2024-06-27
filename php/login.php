@@ -19,7 +19,7 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
 
     // Guardar datos del usuario en la sesión
-    $_SESSION['documento'] = $row['documento'];
+    $_SESSION['id_us'] = $row['documento'];
 
     // Redireccionar a la página principal o dashboard
     header("Location: ../crud/includes/header.php");

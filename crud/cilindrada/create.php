@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['id_us'])) {
+    echo '
+    <script>
+        alert("Por favor inicie sesión e intente nuevamente");
+        window.location = "../../php/login.php";
+    </script>
+    ';
+    session_destroy();
+    die();
+}
+?>
 <?php include '../includes/header.php'; ?>
 <?php include '../includes/db.php'; ?>
 <link rel="stylesheet" href="../css/editarc.css">
@@ -27,11 +41,15 @@
     <label for="cilindrada">Para vehiculo:</label>
     <select name="id_tp_vehiculo	" required>
         <?php
-        $sql = "SELECT * FROM tp_vehiculos WHERE id IN (1, 2, 3)";
-        $result = $conn->query($sql);
-        while ($row = $result->fetch_assoc()) {
-            echo "<option value='" . $row['id'] . "'>" . $row['vehiculos'] . " </option>";
-        }
+      $sql = "SELECT * FROM tp_vehiculos";
+$result = $conn->query($sql);
+
+while ($row = $result->fetch_assoc()) {
+    // Verificar si el campo peso es NULL y ajustar la salida
+    $peso = isset($row['peso']) ? $row['peso'] : ''; // Si peso es NULL, mostrar un mensaje adecuado
+
+    echo "<option value='" . $row['id'] . "'>" . $row['vehiculos'] . " " . $peso . "</option>";
+}
         ?>
     </select>
     <input type="submit" name="submit" value="Crear" class="blue-button">
@@ -41,7 +59,9 @@
 if (isset($_POST['submit'])) {
     $cilindrada = $_POST['cilindrada'];
     $id_tp_vehiculo	 = $_POST['id_tp_vehiculo	'];
-    $sql = "INSERT INTO cilindrada (cilindrada,id_tp_vehiculo	) VALUES ('$cilindrada','$id_tp_vehiculo	')";
+   // $peso	 = $_POST['peso	'];
+
+    $sql = "INSERT INTO cilindrada (cilindrada,id_tp_vehiculo,peso	) VALUES ('$cilindrada','$id_tp_vehiculo','$peso')";
     if ($conn->query($sql) === TRUE) {
         echo "<script>
         alert('Cilindrada actualizado con éxito');

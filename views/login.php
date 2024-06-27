@@ -10,8 +10,6 @@
 
 <body>
     <div class="botones-container">
-        <a href="../index.php">Salir</a>
-        <a href="registro.php">Crear cuenta</a>
     </div>
 
     <div class="container">
@@ -25,8 +23,11 @@
                 <label for="contrasena">Contraseña:</label>
                 <input type="password" id="contrasena" name="password">
             </div>
+            <a style=" text-align: right; " href="registro.php">Crear cuenta</a>
+
             <button type="submit">Iniciar Sesión</button>
         </form>
+
     </div>
 
     <script>

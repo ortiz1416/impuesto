@@ -1,0 +1,9 @@
+
+
+
+ingresar con la siguiente URL para acceder al modulo de administrador 
+
+localhost/impuestos/main.php
+
+
+crear usuario con contraseña 

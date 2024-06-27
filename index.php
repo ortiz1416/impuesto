@@ -36,8 +36,6 @@
                 <ul class="navbar-nav ms-auto">
 
                     <a name="" id="" class="nav-link" href="crud/views/index.php" role="button">Buscar</a>
-                    <a name="" id="" class="nav-link" href="views/registro.php" role="button">Registrar</a>
-                    <a name="" id="" class="nav-link" href="views/login.php" role="button">Login</a>
 
                 </ul>
             </div>

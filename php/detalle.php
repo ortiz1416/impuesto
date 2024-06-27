@@ -1,5 +1,5 @@
 <?php
-include("../crud/includes/db.php");
+include("../crud/includes/db.php"); // Incluir archivo de conexión a la base de datos
 
 // Número de registros por página
 $registros_por_pagina = 1;

@@ -1,4 +1,17 @@
-<?php include '../includes/header.php'; ?>
+<?php
+session_start();
+
+if (!isset($_SESSION['id_us'])) {
+    echo '
+    <script>
+        alert("Por favor inicie sesión e intente nuevamente");
+        window.location = "../../php/login.php";
+    </script>
+    ';
+    session_destroy();
+    die();
+}
+include '../includes/header.php'; ?>
 <?php include '../includes/db.php'; ?>
 <link rel="stylesheet" href="../css/editarc.css"> 
 <h2>Crear Marca</h2>

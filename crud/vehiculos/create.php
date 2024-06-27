@@ -1,4 +1,16 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['id_us'])) {
+    echo '
+    <script>
+        alert("Por favor inicie sesión e intente nuevamente");
+        window.location = "../../php/login.php";
+    </script>
+    ';
+    session_destroy();
+    die();
+}
 include '../includes/header.php';
 include '../includes/db.php';
 ?>
@@ -26,9 +38,12 @@ include '../includes/db.php';
 
     <label for="placa">Placa:</label>
     <input type="text" id="placa" name="placa" required maxlength="6">
+    <span id="placa_feedback"></span>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const inputPlaca = document.getElementById("placa");
+            const feedback = document.getElementById("placa_feedback");
 
             inputPlaca.addEventListener("input", function() {
                 // Convert the input value to uppercase
@@ -39,12 +54,35 @@ include '../includes/db.php';
                 if (!regex.test(inputPlaca.value)) {
                     inputPlaca.value = inputPlaca.value.slice(0, -1);
                 }
+
+                // Additional validation to ensure the proper format
+                const carRegex = /^[A-Z]{3}[0-9]{3}$/; // Car plate: 3 letters followed by 3 numbers
+                const motoRegex = /^[A-Z]{3}[0-9]{2}[A-Z]$/; // Motorbike plate: 3 letters, 2 numbers, and 1 letter
+
+                if (inputPlaca.value.length < 6) {
+                    feedback.textContent = "Placa no válida";
+                    feedback.style.color = "red";
+                } else if (carRegex.test(inputPlaca.value)) {
+                    feedback.textContent = "Placa de carro válida";
+                    feedback.style.color = "green";
+                } else if (motoRegex.test(inputPlaca.value)) {
+                    feedback.textContent = "Placa de moto válida";
+                    feedback.style.color = "green";
+                } else {
+                    feedback.textContent = "Placa no válida";
+                    feedback.style.color = "red";
+                }
             });
         });
     </script>
 
+
+
+
+
     <label for="marca">Marca:</label>
     <select name="marca" required>
+        <option value="" disabled selected hidden>Seleccione marca</option>
         <?php
         $sql = "SELECT * FROM marcas";
         $result = $conn->query($sql);
@@ -54,8 +92,12 @@ include '../includes/db.php';
         ?>
     </select>
 
-    <label for="propietario">Propietario:</label>
+
+    <label for="propietario">Propietario: <a href="../usuarios/create.php">Crear</a>
+    </label>
     <select name="propietario" required>
+        <option value="" disabled selected hidden>Seleccione Propietario</option>
+
         <?php
         $sql = "SELECT * FROM usuarios WHERE tp_user =  1";
         $result = $conn->query($sql);
@@ -66,21 +108,53 @@ include '../includes/db.php';
     </select>
 
     <label for="cilindrada">Cilindrada:</label>
-    <select name="cilindrada" required>
-        <?php
-        $sql = "SELECT * FROM cilindrada";
-        $result = $conn->query($sql);
-        while ($row = $result->fetch_assoc()) {
-            echo "<option value='" . $row['id'] . "'>" . $row['cilindrada'] . "</option>";
-        }
-        ?>
+    <select name="cilindrada" id="cilindrada" required>
+        <option value="">Seleccione un tipo de vehículo primero</option>
     </select>
-
     <label for="n_motor">Número de Motor:</label>
-    <input type="text" name="n_motor" required>
+    <input type="text" id="n_motor" name="n_motor" required>
+    <span id="n_motor_feedback"></span>
 
     <label for="n_chasis">Número de Chasis:</label>
-    <input type="text" name="n_chasis" required>
+    <input type="text" id="n_chasis" name="n_chasis" required>
+    <span id="n_chasis_feedback"></span>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const inputs = document.querySelectorAll("input[name='n_motor'], input[name='n_chasis']");
+
+            inputs.forEach(input => {
+                input.addEventListener("input", function() {
+                    const regex = /^[A-Z0-9]{0,17}$/i;
+                    const feedback = document.getElementById(input.id + "_feedback");
+
+                    // Convert the input value to uppercase
+                    input.value = input.value.toUpperCase();
+
+                    // Check if the input value is valid
+                    const isValid = regex.test(input.value) &&
+                        input.value.length === 17 &&
+                        /[A-Z]/.test(input.value) &&
+                        /[0-9]/.test(input.value);
+
+                    if (isValid) {
+                        feedback.textContent = "Válido";
+                        feedback.style.color = "green";
+                    } else {
+                        feedback.textContent = "Inválido";
+                        feedback.style.color = "red";
+                    }
+
+                    // If invalid character is found, remove the last character
+                    if (!regex.test(input.value)) {
+                        input.value = input.value.slice(0, -1);
+                    }
+                });
+            });
+        });
+    </script>
+
+
 
     <label for="capacidad">Capacidad:</label>
     <input type="text" name="capacidad" required>
@@ -117,7 +191,7 @@ include '../includes/db.php';
 
     <label for="linea">Línea:</label>
     <input type="text" name="linea" required>
-    
+
     <label for="modelo">Modelo:</label>
     <select name="modelo" required>
         <?php
@@ -128,7 +202,7 @@ include '../includes/db.php';
         }
         ?>
     </select>
-    
+
     <label for="f_matricula">Fecha de Matrícula:</label>
     <input type="date" name="f_matricula" required>
 
@@ -144,6 +218,20 @@ include '../includes/db.php';
         xhr.onload = function() {
             if (this.status == 200) {
                 document.getElementById('combustible').innerHTML = this.responseText;
+            }
+        };
+        xhr.send('tp_vehiculo=' + tp_vehiculo);
+    });
+</script>
+<script>
+    document.getElementById('tp_vehiculo').addEventListener('change', function() {
+        var tp_vehiculo = this.value;
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'get_cilindradas.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function() {
+            if (this.status == 200) {
+                document.getElementById('cilindrada').innerHTML = this.responseText;
             }
         };
         xhr.send('tp_vehiculo=' + tp_vehiculo);
@@ -171,7 +259,12 @@ if (isset($_POST['submit'])) {
     $sql = "INSERT INTO vehiculos (placa, marca, modelo, propietario, cilindrada, n_motor, n_chasis, tp_vehiculo, capacidad, combustible, id_color, id_avaluo, valor, linea, f_matricula, estado) 
             VALUES ('$placa', '$marca', '$modelo', '$propietario', '$cilindrada', '$n_motor', '$n_chasis', '$tp_vehiculo', '$capacidad', '$combustible', '$color', '$avaluo', '$valor', '$linea', '$f_matricula', 1)";
     if ($conn->query($sql) === TRUE) {
-        echo "Nuevo vehículo creado con éxito";
+        echo '
+        <script>
+            alert("Vehiculo registrado con exito");
+            window.location = "read.php";
+        </script>
+        ';
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

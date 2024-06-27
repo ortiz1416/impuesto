@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-06-2024 a las 15:25:27
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Tiempo de generación: 27-06-2024 a las 06:54:13
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -50,19 +50,21 @@ INSERT INTO `avaluos` (`id`, `avaluo`) VALUES
 CREATE TABLE `cilindrada` (
   `id` int(11) NOT NULL,
   `cilindrada` varchar(30) NOT NULL,
-  `id_tp_vehiculo` int(11) NOT NULL
+  `id_tp_vehiculo` int(11) NOT NULL,
+  `peso` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `cilindrada`
 --
 
-INSERT INTO `cilindrada` (`id`, `cilindrada`, `id_tp_vehiculo`) VALUES
-(19, '120', 2),
-(20, '150', 2),
-(21, '2000', 1),
-(22, '3000', 1),
-(23, '9000', 3);
+INSERT INTO `cilindrada` (`id`, `cilindrada`, `id_tp_vehiculo`, `peso`) VALUES
+(28, '3600', 4, ''),
+(29, '150', 2, ''),
+(30, '2100', 1, ''),
+(31, '4200', 5, ''),
+(32, '5500', 6, ''),
+(33, '5900', 3, '');
 
 -- --------------------------------------------------------
 
@@ -157,80 +159,6 @@ CREATE TABLE `impuesto` (
   `id_estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `impuesto`
---
-
-INSERT INTO `impuesto` (`id`, `placa`, `id_valor`, `fecha_ini`, `fecha_fin`, `id_estado`) VALUES
-(77, 'MJU900', 487430, '2015-03-03', '2018-03-02', 2),
-(78, 'MJU900', 487430, '2018-03-03', '2021-03-02', 2),
-(79, 'MJU900', 487430, '2021-03-03', '2024-03-02', 2),
-(80, 'MJU900', 487430, '2024-03-03', '2027-03-02', 2),
-(81, 'HMM12T', 316200, '2011-02-05', '2016-02-04', 2),
-(82, 'HMM12T', 316200, '2016-02-05', '2021-02-04', 2),
-(83, 'HMM12T', 316200, '2021-02-05', '2026-02-04', 2),
-(84, 'KLI45J', 316200, '2006-06-07', '2011-06-06', 2),
-(85, 'KLI45J', 316200, '2011-06-07', '2016-06-06', 2),
-(86, 'KLI45J', 316200, '2016-06-07', '2021-06-06', 2),
-(87, 'KLI45J', 316200, '2021-06-07', '2026-06-06', 1),
-(88, 'JJJ234', 415700, '2003-02-20', '2006-02-19', 2),
-(89, 'JJJ234', 415700, '2006-02-20', '2009-02-19', 2),
-(90, 'JJJ234', 415700, '2009-02-20', '2012-02-19', 2),
-(91, 'JJJ234', 415700, '2012-02-20', '2015-02-19', 2),
-(92, 'JJJ234', 415700, '2015-02-20', '2018-02-19', 2),
-(93, 'JJJ234', 415700, '2018-02-20', '2021-02-19', 2),
-(94, 'JJJ234', 415700, '2021-02-20', '2024-02-19', 2),
-(95, 'JJJ234', 415700, '2024-02-20', '2027-02-19', 2),
-(96, 'FGJ552', 593100, '2004-06-23', '2007-06-22', 2),
-(97, 'FGJ552', 593100, '2007-06-23', '2010-06-22', 2),
-(98, 'FGJ552', 593100, '2010-06-23', '2013-06-22', 2),
-(99, 'FGJ552', 593100, '2013-06-23', '2016-06-22', 2),
-(100, 'FGJ552', 593100, '2016-06-23', '2019-06-22', 2),
-(101, 'FGJ552', 593100, '2019-06-23', '2022-06-22', 2),
-(102, 'FGJ552', 593100, '2022-06-23', '2025-06-22', 2),
-(103, 'JJNM56', 328900, '2013-11-28', '2016-11-27', 2),
-(104, 'JJNM56', 328900, '2016-11-28', '2019-11-27', 2),
-(105, 'JJNM56', 328900, '2019-11-28', '2022-11-27', 2),
-(106, 'JJNM56', 328900, '2022-11-28', '2025-11-27', 2),
-(107, 'JKK55K', 205650, '2002-10-16', '2007-10-15', 1),
-(108, 'JKK55K', 205650, '2007-10-16', '2012-10-15', 1),
-(109, 'JKK55K', 205650, '2012-10-16', '2017-10-15', 1),
-(110, 'JKK55K', 205650, '2017-10-16', '2022-10-15', 1),
-(111, 'JKK55K', 205650, '2022-10-16', '2027-10-15', 1),
-(112, 'HBN85K', 205650, '2006-02-15', '2011-02-14', 2),
-(113, 'HBN85K', 205650, '2011-02-15', '2016-02-14', 2),
-(114, 'HBN85K', 205650, '2016-02-15', '2021-02-14', 2),
-(115, 'HBN85K', 205650, '2021-02-15', '2026-02-14', 2),
-(116, 'NMBG44', 328900, '2003-11-19', '2006-11-18', 2),
-(117, 'NMBG44', 328900, '2006-11-19', '2009-11-18', 2),
-(118, 'NMBG44', 328900, '2009-11-19', '2012-11-18', 2),
-(119, 'NMBG44', 328900, '2012-11-19', '2015-11-18', 2),
-(120, 'NMBG44', 328900, '2015-11-19', '2018-11-18', 1),
-(121, 'NMBG44', 328900, '2018-11-19', '2021-11-18', 1),
-(122, 'NMBG44', 328900, '2021-11-19', '2024-11-18', 1),
-(123, 'JHDH23', 328900, '2002-12-12', '2005-12-11', 1),
-(124, 'JHDH23', 328900, '2005-12-12', '2008-12-11', 1),
-(125, 'JHDH23', 328900, '2008-12-12', '2011-12-11', 1),
-(126, 'JHDH23', 328900, '2011-12-12', '2014-12-11', 1),
-(127, 'JHDH23', 328900, '2014-12-12', '2017-12-11', 1),
-(128, 'JHDH23', 328900, '2017-12-12', '2020-12-11', 1),
-(129, 'JHDH23', 328900, '2020-12-12', '2023-12-11', 1),
-(130, 'JHDH23', 328900, '2023-12-12', '2026-12-11', 1),
-(131, 'JDDHD8', 328900, '2011-11-23', '2014-11-22', 1),
-(132, 'JDDHD8', 328900, '2014-11-23', '2017-11-22', 1),
-(133, 'JDDHD8', 328900, '2017-11-23', '2020-11-22', 1),
-(134, 'JDDHD8', 328900, '2020-11-23', '2023-11-22', 1),
-(135, 'JDDHD8', 328900, '2023-11-23', '2026-11-22', 1),
-(136, 'JDSJFD', 593100, '2013-06-26', '2016-06-25', 1),
-(137, 'JDSJFD', 593100, '2016-06-26', '2019-06-25', 1),
-(138, 'JDSJFD', 593100, '2019-06-26', '2022-06-25', 1),
-(139, 'JDSJFD', 593100, '2022-06-26', '2025-06-25', 1),
-(140, 'JKDJFH', 593100, '2011-11-06', '2014-11-05', 2),
-(141, 'JKDJFH', 593100, '2014-11-06', '2017-11-05', 2),
-(142, 'JKDJFH', 593100, '2017-11-06', '2020-11-05', 2),
-(143, 'JKDJFH', 593100, '2020-11-06', '2023-11-05', 1),
-(144, 'JKDJFH', 593100, '2023-11-06', '2026-11-05', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -312,13 +240,6 @@ CREATE TABLE `precios` (
   `id_modelo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `precios`
---
-
-INSERT INTO `precios` (`id`, `valor`, `id_tip_vehiculo`, `id_modelo`) VALUES
-(1, 316200, 1, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -361,8 +282,7 @@ INSERT INTO `tp_vehiculos` (`id`, `vehiculos`, `peso`, `tp_combustible`) VALUES
 (3, 'camion', '', 2),
 (4, 'Camion ', '2 toneladas', 2),
 (5, 'Camion ', '2.1 tonelada a 5 ', 2),
-(6, 'Camion ', '5.1 toneladas o mas', 2),
-(7, 'carros', NULL, 0);
+(6, 'Camion ', '5.1 toneladas o mas', 2);
 
 -- --------------------------------------------------------
 
@@ -371,7 +291,7 @@ INSERT INTO `tp_vehiculos` (`id`, `vehiculos`, `peso`, `tp_combustible`) VALUES
 --
 
 CREATE TABLE `usuarios` (
-  `documento` int(11) NOT NULL,
+  `documento` bigint(11) NOT NULL,
   `nombres` varchar(50) NOT NULL,
   `apellidos` varchar(50) NOT NULL,
   `correo` varchar(50) NOT NULL,
@@ -379,14 +299,6 @@ CREATE TABLE `usuarios` (
   `password` varchar(255) NOT NULL,
   `tp_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `usuarios`
---
-
-INSERT INTO `usuarios` (`documento`, `nombres`, `apellidos`, `correo`, `Telefono`, `password`, `tp_user`) VALUES
-(1005911563, 'Tatiana', 'Ortiz', 'ortiz@gmail.com', '3102475896', 'd9e6762dd1c8eaf6d61b3c6192fc408d4d6d5f1176d0c29169bc24e71c3f274ad27fcd5811b313d681f7e55ec02d73d499c95455b6b5bb503acf574fba8ffe85', 2),
-(1771234567, 'carolina', 'torres', 'caro@gmail.com', '3102475211', 'd9e6762dd1c8eaf6d61b3c6192fc408d4d6d5f1176d0c29169bc24e71c3f274ad27fcd5811b313d681f7e55ec02d73d499c95455b6b5bb503acf574fba8ffe85', 1);
 
 -- --------------------------------------------------------
 
@@ -558,7 +470,7 @@ ALTER TABLE `avaluos`
 -- AUTO_INCREMENT de la tabla `cilindrada`
 --
 ALTER TABLE `cilindrada`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `colores`
@@ -582,7 +494,7 @@ ALTER TABLE `estados`
 -- AUTO_INCREMENT de la tabla `impuesto`
 --
 ALTER TABLE `impuesto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
 
 --
 -- AUTO_INCREMENT de la tabla `marcas`
