@@ -23,7 +23,7 @@ include '../includes/header.php'; ?>
         <th>Tipo de Vehículo</th>
         <th>Peso</th>
 
-        <th>Acciones</th>
+        
     </tr>
     <?php
     $sql = "SELECT * FROM tp_vehiculos";
@@ -36,10 +36,7 @@ include '../includes/header.php'; ?>
                     <td>" . $row["vehiculos"] . "</td>
                     <td>" . $row["peso"] . "</td>
 
-                    <td>
-                        <a href='update.php?id=" . $row["id"] . "'>Editar</a>
-                        <a href='delete.php?id=" . $row["id"] . "'>Eliminar</a>
-                    </td>
+                   
                   </tr>";
         }
     } else {
